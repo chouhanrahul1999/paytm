@@ -11,11 +11,15 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@prisma/client": "^6.8.2",
     "@repo/db": "*",
     "@repo/ui": "*",
     "@tailwindcss/postcss": "^4.1.8",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^6.0.0",
     "jotai": "^2.12.5",
     "next": "^15.3.0",
+    "next-auth": "^4.24.11",
     "postcss": "^8.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

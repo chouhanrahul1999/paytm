@@ -1,3 +1,4 @@
 {
-    "workbench.editor.tabActionCloseVisibility": true
+    "workbench.editor.tabActionCloseVisibility": true,
+    "editor.fontSize": 14
 }
