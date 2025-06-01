@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "../providers";
 import { Inter } from "next/font/google";
+import { AppbarClient } from "../components/AppbarClient";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <Providers>
-        <body className={inter.className}>{children}</body>
-      </Providers>
+      <body className={inter.className}>
+        <Providers>
+          <AppbarClient />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }
