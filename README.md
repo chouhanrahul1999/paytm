@@ -1,84 +1,73 @@
-# Turborepo starter
+# Paytm-like Digital Wallet Platform
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern, full-stack digital wallet system inspired by Paytm, supporting user and merchant portals, secure authentication, real-time balance updates, and seamless bank integration. Built for scalability and maintainability using a monorepo architecture.
 
-## Using this example
+## Features
 
-Run the following command:
+- **User & Merchant Portals:** Separate Next.js apps for users and merchants with custom dashboards.
+- **Authentication:** Secure login with NextAuth.js (Google OAuth) and session management.
+- **Wallet & Transactions:** Add money, view balance, transaction history, and P2P transfers.
+- **Bank Integration:** Webhook-based flow for real-time balance updates from supported banks.
+- **Admin/Bank Webhook:** Express.js service to handle bank callbacks and update user balances.
+- **Shared UI & Logic:** Reusable components and logic via Turborepo monorepo structure.
 
-```sh
-npx create-turbo@latest
-```
+## Tech Stack
 
-## What's inside?
+- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Express.js, NextAuth.js, REST APIs
+- **Database:** PostgreSQL, Prisma ORM
+- **Monorepo:** Turborepo for code sharing and scalability
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## Project Structure
 
 ```
-cd my-turborepo
-pnpm build
+/paytm
+├── apps
+│   ├── user-app         # User dashboard (Next.js)
+│   ├── merchant-app     # Merchant dashboard (Next.js)
+│   └── bank-webhook     # Express.js webhook for bank integration
+├── packages
+│   ├── db               # Prisma schema, migrations, and client
+│   ├── ui               # Shared UI components
+│   └── ...
 ```
 
-### Develop
+## Getting Started
 
-To develop all apps and packages, run the following command:
+1. **Clone the repository:**
+   ```bash
+   git clone <repo-url>
+   cd paytm
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Set up environment variables:**
+   - Copy `.env.example` to `.env` in each app and fill in required values (Google OAuth, DB connection, NextAuth secret, etc).
+4. **Run database migrations:**
+   ```bash
+   npx prisma migrate dev --name init --schema packages/db/prisma/schema.prisma
+   ```
+5. **Start the apps:**
+   ```bash
+   # In separate terminals
+   npm run dev --workspace=apps/user-app
+   npm run dev --workspace=apps/merchant-app
+   npm run dev --workspace=apps/bank-webhook
+   ```
 
-```
-cd my-turborepo
-pnpm dev
-```
+## Usage
+- **User App:** Sign up, add money, view balance, and see transaction history.
+- **Merchant App:** Manage merchant-specific features (extend as needed).
+- **Bank Webhook:** Receives callbacks from supported banks and updates user balances in real time.
 
-### Remote Caching
+## Contributing
+Pull requests and issues are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## License
+MIT
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+---
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+**Developed by [Your Name] — June 2025**
